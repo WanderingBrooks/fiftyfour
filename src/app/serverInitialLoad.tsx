@@ -2,9 +2,8 @@
 import getDeparturesForFiftyFourOffReimersholme from '../getDeparturesForFiftyFourOffReimersholme'
 import ClientRefresh from './clientRefresh'
 
-// Next.js will invalidate the cache when a
-// request comes in, at most once every 60 seconds.
-export const revalidate = 60;
+// Server side render but don't prerender during build
+export const dynamic = 'force-dynamic';
  
 export default async function ServerInitialLoad() {
   const departures = await getDeparturesForFiftyFourOffReimersholme();
