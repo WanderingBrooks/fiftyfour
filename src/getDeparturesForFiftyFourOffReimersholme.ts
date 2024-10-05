@@ -9,7 +9,8 @@ if (!apiKey) {
 }
 
 const loadDepartures = () => (fetch(
-  `${baseURL}?id=${bergsundsStrandStopId}&format=json&accessId=${apiKey}`
+  `${baseURL}?id=${bergsundsStrandStopId}&format=json&accessId=${apiKey}`,
+  { cache: 'no-store' }
 ).then((res) => res.json()) as Promise<DepartureAPIResponse>);
 
 const getDepartureForFiftyFourOffReimersholme = async() => {
