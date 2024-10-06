@@ -1,3 +1,3 @@
-import ServerInitialLoad from './serverInitialLoad'
+import Departures from './departures'
 
-export default ServerInitialLoad;
+export default Departures;

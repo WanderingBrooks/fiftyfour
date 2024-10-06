@@ -10,7 +10,10 @@ if (!apiKey) {
 
 const loadDepartures = () => (fetch(
   `${baseURL}?id=${bergsundsStrandStopId}&format=json&accessId=${apiKey}`,
-  { next: { revalidate: 60 } },
+  // Cache on the request to the external API level. Server side components are not cached.
+  // instead we cache here to ensure we are always getting the most up to date data when a
+  // user reloads the page.
+  { next: { revalidate: 60 /* seconds */ } },
 ).then((res) => res.json()) as Promise<DepartureAPIResponse>);
 
 const getDepartureForFiftyFourOffReimersholme = async() => {
@@ -24,8 +27,6 @@ const getDepartureForFiftyFourOffReimersholme = async() => {
       // going to Hornsberg strand
       && departure.directionFlag === '1'
   );
-
-  console.log('Refetching departures and found: ', departuresOfTheFiftyFourLeavingReimersholme.length)
 
   return departuresOfTheFiftyFourLeavingReimersholme.map(departure => ({ id: departure.JourneyDetailRef.ref, time: departure.time }));
 }
