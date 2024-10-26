@@ -17,7 +17,7 @@ export default function ServerInitialLoad() {
       {error && (
         <div>
           <span>Whelp something went wrong. ¯\_(ツ)_/¯</span>
-          <span>{error}</span>
+          <span>{JSON.stringify(error)}</span>
         </div>
       )}
       {departures && !error && !isLoading && departures.map(departure => (   
