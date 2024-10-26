@@ -31,8 +31,6 @@ const getDepartureForFiftyFourOffReimersholme = async() => {
   return departuresOfTheFiftyFourLeavingReimersholme.map(departure => ({ id: departure.JourneyDetailRef.ref, time: departure.time }));
 }
 
-export default getDepartureForFiftyFourOffReimersholme;
-
 export async function GET() {
   const departures = await getDepartureForFiftyFourOffReimersholme();
  
