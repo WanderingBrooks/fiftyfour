@@ -6,6 +6,8 @@ const checkIfListisDepartureList = (list: unknown): list is Departure[] => Array
 const fetcher = (url: string) => fetch(url).then(ressponse => ressponse.json())
 
 const useDepartures = () => {
+  // Loads data initially but also re-queries the data
+  // when the tab is focused
   const { data, error, isLoading } = useSWR('/api', fetcher)
 
   const isListOfDepartures = checkIfListisDepartureList(data);
