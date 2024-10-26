@@ -1,4 +1,4 @@
-import { DepartureAPIResponse } from './types'
+import { DepartureAPIResponse } from '../../types'
 
 const baseURL = 'https://api.resrobot.se/v2.1/departureBoard';
 const bergsundsStrandStopId = '740046226';
@@ -32,3 +32,9 @@ const getDepartureForFiftyFourOffReimersholme = async() => {
 }
 
 export default getDepartureForFiftyFourOffReimersholme;
+
+export async function GET() {
+  const departures = await getDepartureForFiftyFourOffReimersholme();
+ 
+  return Response.json(departures)
+}
